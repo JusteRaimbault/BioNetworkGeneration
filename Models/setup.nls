@@ -1,0 +1,81 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SETUP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+to setup
+  clear-all
+  resize-world -20 20 0 20
+  set-patch-size 10
+  set-default-shape noeuds "dot"
+  set-default-shape aretes "line"
+  set-default-shape poles "star"
+  set Dmin 0
+  set Dmax D0
+  set n count patches                          ;; nombre de noeuds
+  
+  setup-noeuds
+  setup-aretes
+  setup-cities
+  
+  reset-ticks
+end
+
+to setup-noeuds
+  ask patches [
+    set pcolor white                           ;; couleur du fond
+    sprout-noeuds 1 [
+      set color black                          ;; couleur des noeuds
+      set size 0.5
+      set number who                           ;; numéro = who au départ
+      
+      ;;let hide the nodes ???
+      ;; Nope, they will be colored as the adjacent arete (max of color)
+      
+      
+    ]
+  ]
+end
+
+
+to setup-aretes
+  ask noeuds [
+    create-aretes-with other noeuds in-radius 1.5 [
+      set D D0
+      let di 0
+      let otherend end2
+      ask end1 [ set di distance otherend ]
+      set L di
+      set thickness 0.2
+      set color scale-color grey D Dmax Dmin
+    ]
+  ]
+end
+
+to setup-cities
+  ask patches [set density 0]
+  
+  ifelse setup-from-file?[
+     let pos user-new-file
+     if pos != false [
+       file-open pos
+       let expl file-read-line ; explanation line
+       while [not file-at-end?][
+         let s file-read-line ;comment line
+         let x read-from-string file-read-line
+         let y read-from-string file-read-line
+         let dens read-from-string file-read-line
+         ask patch x y [set density dens]
+       ]
+     ]      
+  ][    
+      ask n-of c patches[set density density-min + random (density-max - density-min)]
+  ]
+  
+  ;;then diffusion procedure
+  repeat diffusion-times [diffuse4 density diffusion-prop]
+  color-patches
+           
+  set c1 one-of patches
+  set c2 one-of patches
+end

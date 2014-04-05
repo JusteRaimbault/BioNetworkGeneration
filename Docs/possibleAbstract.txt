@@ -1,0 +1,25 @@
+
+====================
+== Title : Optimal transportation infrastructure Corridor determination by bottom-up network self generation
+====================
+
+=======
+== Abstract
+=======
+
+The question of multi-objective optimal corridor determination for a new project of transportation infrastructure stays a key issue in transportation planning and territorial intelligence. Many top-down approaches have already been tackled in the literature and are operationally mature. Also mixed top-down and bottom-up approaches such as Land-Use Transport Interaction models show a strong potential in sustainable design of new infrastructures (Wegener & al., 2004 ; Wang, 2006) [Check references !]. We propose a pure bottom-up approach, using new type of models proposed for network self generation ([find reference reviewing Net Self-G. -> exists]), to compare corridors alternatives. Taking the infrastructure as an exogenous parameter, we use a constrained model derived from slime-mold evolution in order to simulate the response of the system to that modification of the environment. After having internally validated the model in this particular context and proceeded to sensitivity analysis, we are able to apply it first on an abstract situation, then on a real case with GIS data, proposing in both case a bi-objective Pareto set of optimal solutions. The proximity of the obtained solution with the one actually proposed by planners validates externally the application of this bottom-up approach of the transportation system to the planning problem.
+
+======
+== Keywords
+======
+
+Transportation planning
+Bi-objective optimisation
+Network self-generation
+Emergence in transportation systems
+
+
+**************
+
+
+

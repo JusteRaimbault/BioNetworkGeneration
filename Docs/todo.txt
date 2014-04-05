@@ -1,0 +1,39 @@
+
+--------------
+
+
+
+- extension du modèle à une distrib continue de densité pour O/D ; réseau viaire précontraint
+
+ - validation interne du modèle
+     * comportement stat
+     * exploration de l'espace des paramètres
+
+ - nouvelle exploration plus fine de l'application théorique à la détermination d'un corridor
+
+ - extension sur données GIS : raster pour O/D et vectoriel pour réseau viaire (j'ai pas mal de données) ; peut être ajouter contraint physique pour le corridor ? (relief) ; si ça marche application à un cas concret.
+
+Il faudra insister sur le fait qu'on regarde un comportement bottom-up de self-organisation du réseau ; parce que la literature est déjà très abondante sur les déterminations de corridors multi-objectifs classiques. !
+
+
+--------------
+Ideas ::
+
+ - bilayer formalism :: isn't it the same :: check Ektoras' publications
+
+
+--------------
+
+Q raised by the methodology ::
+
+  ** Does the bottom-up generation has a legitmity in relation to the exogeneous infrastructure corridor ? **
+  ** In particular THAT type of self-generation ? [biologically driven] -> surely ; check results of Tero paper... (better resilience of perf ?) **
+  ** Sensitivity analysis :: necessary with constrained configuration -> does particular constraints have a strong impact on emerging structure ; does "realistic" constraints [in the frame of the abstract representation :: check what it can mean ?] have a strong influence on emerging structure ? **
+
+*** What do we bring -- Why is it a scientific advance ? ***
+  -> towards a significance of self-generated network structures ? :: check literature on that !
+  -> innovative combination of bottom-up generation and top-down corridor constraining ? [maybe also already done ?]
+???
+
+
+

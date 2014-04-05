@@ -1,0 +1,118 @@
+to go
+  ;;memorize pipes
+  let old-pipes aretes with [D > Df]
+  
+  reset-numbers                          ;; redéfinir les numéros des noeuds
+  choose-OD                         ;; choisir deux poles au hasard
+  let Pm p-system
+  
+  ask noeuds[reset-p Pm]
+  
+  set Dmax max [D] of aretes
+  set total-diameter-variation 0
+  ask aretes[
+    reset-Q
+    reset-D
+  ]
+
+  set new-links-number count aretes with [D > Df and not member? self old-pipes]
+
+  tick
+end
+
+
+
+to reset-numbers
+  let n1 count noeuds
+  if n = n1 [stop]
+  set n n1
+  let j 0
+  foreach sort noeuds[
+    ask ? [
+      set number j                         ;; actualiser la valeur de number
+      set j j + 1
+    ]
+  ]
+end
+
+to choose-OD
+  ask c1 [color-patch]
+  ask c2 [color-patch]
+  ;;randomly choose origin and destination according to the densities
+  let s sum [density] of patches
+  let r random-float s
+  let sacc 0
+  let found? false
+  ask patches [if not found? [set sacc sacc + density if sacc >= r [set c1 self set found? true]]]
+  set r random-float s
+  set sacc 0 set found? false
+  ask patches [if not found? [set sacc sacc + density if sacc >= r [set c2 self set found? true]]]
+  
+  ask c1 [set pcolor green set n-times n-times + 1]
+  ask c2 [set pcolor green set n-times n-times + 1]
+end
+
+to-report p-system
+  let M setup-M
+  let Vm setup-V
+  report matrix:solve M Vm
+end
+
+to-report setup-M
+  let M matrix:make-constant (n - 1) (n - 1) 0 ;; n-1 x n-1 Matrice
+  ask noeuds[
+    if number = n - 1 [stop]
+    let kll 0
+    ask my-aretes[
+      let s D / L
+      set kll kll + s
+      if [number] of other-end != n - 1 [
+      matrix:set M [number] of myself [number] of other-end (- s) ]          ;; éléments hors la diagonale
+    ]
+    if kll < 1e-6 [set kll 1e-6]
+    matrix:set M number number kll                      ;; éléments sur la diagonale
+  ]
+
+  report M
+end
+
+to-report setup-V
+  let Vm matrix:make-constant (n - 1) 1 0 ;; n-1 x 1 Matrice
+  let aux [number] of one-of noeuds-on c1
+  if aux != n - 1 [
+  matrix:set Vm aux 0 I0]                  ;; élément différent de 0
+  set aux [number] of one-of noeuds-on c2
+  if aux != n - 1 [
+  matrix:set Vm aux 0 (- I0)]              ;; élément différent de 0
+  
+  report Vm
+end
+
+to reset-p [Pm] ; noeuds procedure
+  set k sum [D / L] of my-aretes
+  ifelse number = n - 1
+  [ set p 0 ]
+  [ set p matrix:get Pm number 0 ]                 ;; actualiser la valeur de p
+end
+
+to reset-Q ;aretes procedure
+  set Q D / L * ([p] of end1 - [p] of end2)  
+end
+
+to reset-D ;aretes procedure
+  ;; delta t -> should put in one single constant
+  let dt 0.05
+  let oldD D                 
+  set D dt * f + (1 - dt) * D
+  
+  ;;diameter variation :
+  set total-diameter-variation total-diameter-variation + (D - oldD)
+  
+  ;if D < 1e-6 [die]
+  set color scale-color grey D Dmax Dmin
+end
+
+to-report f                        ;; Aretes procedure
+  let g 1.8                     ;; gamma
+  report (abs Q) ^ g / (1 + (abs Q) ^ g)
+end
