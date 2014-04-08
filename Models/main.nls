@@ -21,6 +21,10 @@ to go
 end
 
 
+to go-for-one-time-step
+  
+end
+
 
 to reset-numbers
   let n1 count noeuds
@@ -88,7 +92,10 @@ to-report setup-V
   report Vm
 end
 
-to reset-p [Pm] ; noeuds procedure
+
+; noeuds procedure
+;;reset pression matrix
+to reset-p [Pm]
   set k sum [D / L] of my-aretes
   ifelse number = n - 1
   [ set p 0 ]

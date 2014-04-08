@@ -79,3 +79,11 @@ to setup-cities
   set c1 one-of patches
   set c2 one-of patches
 end
+
+
+
+
+;;explo specific setup
+to setup-exploration
+  
+end

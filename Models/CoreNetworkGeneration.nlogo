@@ -8,23 +8,32 @@ __includes[
   ;;setup
   "setup.nls"
   
+  ;;evaluation functions
   "evaluation.nls"
+  
+  
+  ;;utils
+  "/Users/Juste/Documents/ComplexSystems/Softwares/NetLogo/utils/ExplorationUtilities.nls"
+  "/Users/Juste/Documents/ComplexSystems/Softwares/NetLogo/utils/FileUtilities.nls"  
   
 ]
 
 
 
 globals [
-; This variables are defined by the user
-;  I0                   ;; flux initiaux
-;  D0                   ;; D initiaux
-;  Df                   ;; D min final
-;  c                    ;; nb de villes
+  
+  ;;runtime variables
+  ; This variables are defined by the user
+  ;  I0                   ;; flux initiaux
+  ;  D0                   ;; D initiaux
+  ;  Df                   ;; D min final
+  ;  c                    ;; nb de villes
 
-  I                    ;; matrice d'incidence
+  ;; matrice d'incidence :: UNUSED VAR ?
+  incidence-matrix                  
   Dmin                 ;; diamètre blanc
   Dmax                 ;; diamètre noir
-;  n0                   ;; nb initial de noeuds
+  ;  n0                   ;; nb initial de noeuds
   n                    ;; nb de noeuds
   c1                   ;; ville 1
   c2                   ;; ville 2
@@ -35,6 +44,10 @@ globals [
   ;;-> nope, even 2nd derivative stays noisy
   ;;let try "nunmber of new links" ?
   new-links-number
+  
+  
+  ;;exploration variables
+  total-time-steps
   
   
 ]
@@ -56,7 +69,7 @@ undirected-link-breed [real-links real-link]
 
 patches-own[
   density
-  n-times  
+  n-times
 ]
 
 noeuds-own [
@@ -97,7 +110,6 @@ end
 to color-patch
   set pcolor scale-color red (- density) (- max [density] of patches) (- min [density] of patches)
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 261
