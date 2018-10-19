@@ -17,7 +17,7 @@
 
 
 
-  \title[Beamer Poster]{Des systèmes naturels aux systèmes urbains: génération de réseaux de transport optimaux par modèle \emph{slime-mould}}
+  \title{Des systèmes naturels aux systèmes urbains: génération de réseaux de transport optimaux par modèle \emph{slime-mould}}
   \author[juste.raimbault@polytechnique.edu]{J. Raimbault$^{1,2}$}
   \institute[]
   {$^1$ UPS CNRS 3611 ISC-PIF et $^2$ UMR CNRS 8504 Géographie-cités\vspace{1cm}}
@@ -46,15 +46,13 @@
         \begin{columns}[t]
         \begin{column}{.95\textwidth}
           \begin{itemize}         
-          \item \begin{justify}%Conception et évaluation des infrastructures de transport généralement \emph{top-down} (approche type modèles d'interaction transport-usage du sol~\cite{wegener2004land}).
-          Méthodes classiques de conception et d'évaluation des infrastructures de transport basée sur scenarios exogènes \cite{wegener2004land}; optimisation et/ou analyse de données.
-          \end{justify}
+          \item \justify Méthodes classiques de conception et d'évaluation des infrastructures de transport basées sur scenarios exogènes \cite{wegener2004land}; de type optimisation et/ou analyse de données \cite{karlaftis2011statistical}.
+          \end{itemize}
           \bigskip
-          %Récente introduction des méthodes de \emph{bio-mimétisme} pour le design et le management des systèmes technico-sociaux complexes~\cite{doursat2012morphogenetic}.
-          \item \begin{justify} Ingénierie morphogénétique à la croisée des systèmes auto-organisés et architecturés \cite{doursat2012morphogenetic}: application démontrée à la conception d'infrastructures de transports~\cite{bebber2007biological}.
+          \begin{itemize} 
+          \item \begin{justify} Ingénierie morphogénétique à la croisée des systèmes auto-organisés et architecturés \cite{doursat2012morphogenetic} ; application démontrée à la conception d'infrastructures de transport \cite{bebber2007biological}.
           \end{justify}
-          %\bigskip
-          %\item Application démontrée à la conception d'infrastructures de transports~\cite{bebber2007biological}. %  par optimisation multi-objectif (ex. coût, robustesse) émergente
+          
           \bigskip
           \item \begin{justify}Application d'un modèle de croissance de \emph{slime-mould} à la conception multi-objectifs d'un réseau de transport.\end{justify}
           \end{itemize}
@@ -71,13 +69,14 @@
           Modèle de croissance d'un \emph{slime-mould}~\cite{tero2010rules} : principe \emph{d'exploration puis renforcement}.
           %pour une moisissure à la recherche de ressources.
           
-          \bigskip
+          \vspace{1.5cm}
+                    
+          $\rightarrow$ \textit{Etude de l'aspect renforcement :} réseau initial homogène de tubes $ij$, longueur $L_{ij}$, diamètre variable $D_{ij}$, traversés par un flux de fluide $Q_{ij}$. Sommets $i$ à la pression $p_i$. Un nombre de noeuds $N$ sont à desservir, parmi eux aléatoirement à chaque étape l'un est source $p_{i_+}=I_0$ et l'autre puits $p_{i_-}=-I_0$
           
-          Etude de l'aspect renforcement : réseau initial homogène de tubes $ij$, longueur $L_{ij}$, diamètre variable $D_{ij}$, traversés par un flux de fluide $Q_{ij}$. Sommets $i$ à la pression $p_i$. Un nombre de noeuds $N$ sont à desservir, parmi eux aléatoirement à chaque étape l'un est source $p_{i_+}=I_0$ et l'autre puits $p_{i_-}=-I_0$
+          \vspace{1.5cm}
           
           
-          \bigskip
-          \textit{Itération du modèle :}
+          $\rightarrow$ \textit{Itération du modèle :}
           \begin{enumerate}
           \item Détermination des flux par lois de Kirchoff (analogie électrostatique, résolution d'un système fermé) : loi d'Ohm
           \begin{equation}
@@ -96,9 +95,9 @@ et conservation des flux
 \end{equation}
           \end{enumerate}
 
-\bigskip
+\vspace{1.5cm}
 
-Extraction du réseau final après convergence selon un paramètre de seuil de diamètre ou un nombre maximal d'itérations.
+$\rightarrow$ \textit{Extraction du réseau final} après convergence selon un paramètre de seuil de diamètre ou un nombre maximal d'itérations.
  %(distributions finales généralement bimodales).
 
 %\bigskip 
@@ -117,8 +116,8 @@ Extraction du réseau final après convergence selon un paramètre de seuil de d
         \begin{columns}[t]
         \begin{column}{.95\textwidth}
         \begin{justify}
-          Comportement du modèle évalué au travers d'indicateurs contradictoires de performance pour le réseau généré :
-          %$(V_f,E_f)$, qui peuvent être vu comme des objectifs contradictoires :
+          Comportement du modèle évalué au travers d'indicateurs contradictoires de performance pour le réseau généré $(V_f,E_f)$:
+          %, qui peuvent être vu comme des objectifs contradictoires :
           \bigskip
           \begin{itemize}
           \item Coût de construction $c=\sum_{ij\in E_f}D_{ij}(t_f)$
@@ -129,7 +128,7 @@ Extraction du réseau final après convergence selon un paramètre de seuil de d
           \]
           \end{justify}
           \bigskip
-          \item Robustesse (indice \textit{Network Trip Robustness}, impact de la suppression des liens~\cite{sullivan2010identifying})
+          \item Robustesse: indice \textit{Network Trip Robustness}, impact de la suppression des liens~\cite{sullivan2010identifying}
           \end{itemize}
 
           \end{justify}
@@ -139,11 +138,15 @@ Extraction du réseau final après convergence selon un paramètre de seuil de d
         
         \begin{block}{Exploration du modèle}
         \begin{columns}[t]
-        \begin{column}{.7\textwidth}
-        	
+        \begin{column}{.6\textwidth}
+        	\begin{justify}
+        	\vspace{-6cm}
+        	Exploration de l'espace des paramètres du modèle par calcul intensif, rendu transparent par le logiciel libre d'exploration de modèles OpenMOLE \cite{reuillon2013openmole}
+        	\end{justify}
         \end{column}
-		\begin{column}{.25\textwidth}
-        	\includegraphics[width=\linewidth]{figures/openmole4.png}
+		\begin{column}{.35\textwidth}
+			\centering
+        	\includegraphics[width=\columnwidth]{figures/openmole4.png}
         \end{column}
         \end{columns}
         \end{block}
@@ -179,28 +182,32 @@ Extraction du réseau final après convergence selon un paramètre de seuil de d
       \end{column}
       
       
+      
       \begin{column}{.49\textwidth}
+      
+      \vspace{-1cm}
       
        \begin{block}{Application : desserte optimale}
         \vspace{-1.5cm}
           \begin{columns}[t]
         \begin{column}{.95\textwidth}
         %Mission de prospective pour la mairie de Romainville : itinéraire d'une navette intra-urbaine avec points de desserte imposés.\end{justify}
-       \begin{justify} Problème type voyageur de commerce, mais multi-objectif (coût, vitesse, robustesse) : itinéraire de desserte pour une navette intra-urbaine. 
+        % , mais multi-objectif (coût, vitesse, robustesse)
+       \begin{justify} Problème type voyageur de commerce multi-objectifs : itinéraire de desserte pour une navette intra-urbaine avec points de passage imposés, et objectifs de coût et efficacité.
        \end{justify}
          
          % la génération de réseau \emph{bottom-up} par application du modèle sur un réseau initial construit par données géographiques réelles (réseau de rues) donne une solution proche du front de Pareto.
-         \bigskip\bigskip
-          %\vspace{2cm}
+         %\bigskip\bigskip
+          \vspace{1cm}
           
           {
-          \centering
-          \includegraphics[width=0.32\columnwidth]{figures/tick1}
-          \includegraphics[width=0.32\columnwidth]{figures/tick10}
-          \includegraphics[width=0.32\columnwidth]{figures/tick20}\\
-          \includegraphics[width=0.32\columnwidth]{figures/tick50}
-          \includegraphics[width=0.32\columnwidth]{figures/tick101}
-          \includegraphics[width=0.32\columnwidth]{figures/reseauFinal}\\
+          %\centering
+          \includegraphics[width=0.33\columnwidth]{figures/tick1}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/tick10}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/tick20}\\\hrule height 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/tick50}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/tick101}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/reseauFinal}\\
           \bigskip
           \small\textit{Convergence progressive du réseau vers le réseau optimal desservant les points fixés (en rouge), en partant d'un réseau initial à diamètres égaux (réseau de rues).}\bigskip
           
@@ -217,39 +224,36 @@ Extraction du réseau final après convergence selon un paramètre de seuil de d
         \begin{justify}
         \vspace{-2cm}
           
-          %Application abstraite : \textit{étant donné une distribution de noeuds à desservir (puits), quel est le corridor optimal pour une infrastructure à plus grande échelle (ex. : réseau ferré) pour laquelle les stations sont considérées comme des sources, au sens de l'optimalité multi-critères du réseau local auto-généré dans ce contexte ?}
-          
-          %\bigskip
-          %$\rightarrow$ Exploration heuristique d'un espace arborescent d'implantations possibles ; obtention des fronts de Pareto pour les différents indicateurs ; choix de solutions optimales au sens de Pareto
-          %\vspace{1cm}
           
           Dans le cadre d'une configuration métropolitaine polycentrique stylisée \cite{le2015modeling}, comment élaborer automatiquement différents scénarios pour un nouveau réseau de transport ?
           
-          \bigskip\bigskip
+          \vspace{1.5cm}
           
-          {
+          {\color{white}
           \centering
-          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_1_bis.png}
-          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_2_quart.png}
-          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_25_bis.png}\\
-          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_3_bis.png}
-          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_5.png}
+          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_1_bis.png}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_2_quart.png}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_25_bis.png}\\\hrule height 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_3_bis.png}\vrule width 1pt
+          \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_5.png}\vrule width 1pt
           \includegraphics[width=0.33\columnwidth]{figures/bionw_territ6_gamma1_8.png}\\
           \bigskip
-          \small\textit{Réseaux stylisés obtenus pour des valeurs décroissantes de $\gamma$, pour une même configuration de desserte des centres.}
+          \color{black}
+          \small\textit{Réseaux stylisés obtenus pour des valeurs décroissantes de $\gamma$, pour une même configuration des centres de population à desservir (densité de population générée par mélange d'exponentielles).}
           }
           
           \vspace{1.5cm}
           
           {
           \centering
-          \includegraphics[width=0.49\columnwidth]{figures/pareto_cost-robustness_facetCenterNumber_withgaussianCI.png}
-          \includegraphics[width=0.49\columnwidth]{figures/pareto_cost-speed_facetCenterNumber_withgaussianCI.png}\\
+          %\hspace{-1cm}
+          \includegraphics[width=0.5\columnwidth]{figures/pareto_cost-robustness_facetCenterNumber_withgaussianCI.png}
+          \includegraphics[width=0.5\columnwidth]{figures/pareto_cost-speed_facetCenterNumber_withgaussianCI.png}\\
          
          \bigskip
           
           \small
-          \textit{Optimisation de Pareto : projection des configurations explorées dans l'espace des indicateurs, obtention du front de Pareto ; configurations correspondant à trois points optimaux.}
+          \textit{Optimisation de Pareto : fronts bi-objectifs entre les couples d'indicateurs obtenus pour un échantillonnage de 1000 valeurs pour $\gamma$, nombre de centres de 3 à 6 (sous-graphes) et 100 réplications (barres d'erreurs : intervalles de confiance à 95\%).}
          }
           
           \end{justify}
